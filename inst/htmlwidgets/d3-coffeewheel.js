@@ -96,6 +96,12 @@ var initializeCoffeeWheel = function(data, el, width, height, partitionAttribute
       		}
       	}
       };
+	    
+      //Addition by T.Alosi
+      //If the data is not an array, create an array
+      if(!Array.isArray(json)){
+		json = [json];
+      }
 
       for(var i=0; i < json.length; i++) {
       	assignSizes(json[i]);
@@ -129,7 +135,7 @@ var initializeCoffeeWheel = function(data, el, width, height, partitionAttribute
           .on("click", click);
       textEnter.append("tspan")
           .attr("x", 0)
-          .text(function(d) { return d.depth ? d.name.split(" ")[0] : ""; });
+          .text(function(d) { var dataName = d.name || d.id; return d.depth ? dataName.split(" ")[0] : "";}); //Modified by T.Alosi to support .name or .id
 
       function click(d) {
         path.transition()
