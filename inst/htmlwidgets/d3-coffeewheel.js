@@ -99,12 +99,12 @@ var initializeCoffeeWheel = function(data, el, width, height, partitionAttribute
 	    
       //Addition by T.Alosi
       //If the data is not an array, create an array
-      if(!Array.isArray(json)){
-	//if(Array.isArray(json.children){
-	//	json = json.children;
-	//} else {
-		json = [json];
-	//}
+       if(!Array.isArray(json)){
+           if(Array.isArray(json.children)){
+              json=json.children;
+           }else{
+              json = [json];
+	   }
       }
 
       for(var i=0; i < json.length; i++) {
